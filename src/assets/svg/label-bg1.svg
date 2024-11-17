@@ -1,0 +1,27 @@
+<svg width="146" height="29" viewBox="0 0 146 29" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g id="Group 1985" filter="url(#filter0_b_1515_2297)">
+<g id="Rectangle 1048">
+<path d="M0 0H137.375L146 7.5V28H0V0Z" fill="url(#paint0_linear_1515_2297)" fill-opacity="0.32"/>
+<path d="M0.5 0.5H137.188L145.5 7.72782V27.5H0.5V0.5Z" stroke="#1FC6FF" stroke-opacity="0.24"/>
+</g>
+<g id="Group 1984">
+<rect id="Rectangle 1047" y="4" width="1" height="24" fill="#1FC6FF"/>
+<rect id="Rectangle 1048_2" width="1" height="1" fill="#1FC6FF"/>
+<rect id="Rectangle 1049" y="2" width="1" height="1" fill="#1FC6FF"/>
+<rect id="Rectangle 1050" y="28" width="1" height="1" fill="#4B4B4B" fill-opacity="0.32"/>
+<rect id="Rectangle 1051" x="2" y="28" width="1" height="1" fill="#4B4B4B" fill-opacity="0.32"/>
+</g>
+</g>
+<defs>
+<filter id="filter0_b_1515_2297" x="-4" y="-4" width="154" height="37" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+<feFlood flood-opacity="0" result="BackgroundImageFix"/>
+<feGaussianBlur in="BackgroundImageFix" stdDeviation="2"/>
+<feComposite in2="SourceAlpha" operator="in" result="effect1_backgroundBlur_1515_2297"/>
+<feBlend mode="normal" in="SourceGraphic" in2="effect1_backgroundBlur_1515_2297" result="shape"/>
+</filter>
+<linearGradient id="paint0_linear_1515_2297" x1="5.14087e-07" y1="12" x2="138" y2="12" gradientUnits="userSpaceOnUse">
+<stop stop-color="#1FC6FF"/>
+<stop offset="1" stop-color="#1FC6FF" stop-opacity="0"/>
+</linearGradient>
+</defs>
+</svg>

@@ -1,0 +1,28 @@
+<svg width="300" height="50" viewBox="0,0,300,50" style="overflow: visible; display: block;">
+    <image x="0" y="18" width="300" height="10" preserveAspectRatio="none"
+        xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAQAAAAABCAYAAAAxWXB3AAAAAXNSR0IArs4c6QAAACxJREFUOE9jZGD4/5+BhYFhxGLm/wwMDH9GLGZi+Ddiox6U7Bn/jtioByd7AEL5gwCMzJmeAAAAAElFTkSuQmCC">
+    </image>
+    <g transform="translate(0,28)" fill="none" font-size="10" font-family="sans-serif" text-anchor="middle">
+        <g class="tick" opacity="1" transform="translate(0.5,0)">
+            <line stroke="currentColor" y2="10" y1="-10"></line><text fill="currentColor" y="13" dy="0.71em">0.3</text>
+        </g>
+        <g class="tick" opacity="1" transform="translate(50.5,0)">
+            <line stroke="currentColor" y2="10" y1="-10"></line><text fill="currentColor" y="13" dy="0.71em">0.4</text>
+        </g>
+        <g class="tick" opacity="1" transform="translate(100.5,0)">
+            <line stroke="currentColor" y2="10" y1="-10"></line><text fill="currentColor" y="13" dy="0.71em">0.5</text>
+        </g>
+        <g class="tick" opacity="1" transform="translate(150.5,0)">
+            <line stroke="currentColor" y2="10" y1="-10"></line><text fill="currentColor" y="13" dy="0.71em">0.6</text>
+        </g>
+        <g class="tick" opacity="1" transform="translate(200.5,0)">
+            <line stroke="currentColor" y2="10" y1="-10"></line><text fill="currentColor" y="13" dy="0.71em">0.7</text>
+        </g>
+        <g class="tick" opacity="1" transform="translate(250.5,0)">
+            <line stroke="currentColor" y2="10" y1="-10"></line><text fill="currentColor" y="13" dy="0.71em">0.8</text>
+        </g>
+        <g class="tick" opacity="1" transform="translate(300.5,0)">
+            <line stroke="currentColor" y2="10" y1="-10"></line><text fill="currentColor" y="13" dy="0.71em">0.9</text>
+        </g><text x="0" y="-16" fill="currentColor" text-anchor="start" font-weight="bold" class="title"></text>
+    </g>
+</svg>

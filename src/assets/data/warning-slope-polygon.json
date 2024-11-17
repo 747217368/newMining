@@ -1,0 +1,305 @@
+{
+  "type": "FeatureCollection",
+  "layer": {
+    "id": "m-4e94acbe-2c53-417b-8972-dcb7adef5cc0",
+    "name": "默认数据图层"
+  },
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "",
+        "id": "m-2deb02a6-813f-48fe-befb-1dd7d97382c6",
+        "text": "严重变形",
+        "type": "polygon",
+        "style": {
+          "color": "#ff4d4f",
+          "opacity": 0.5,
+          "outline": true,
+          "outlineWidth": 2,
+          "materialType": "Color",
+          "clampToGround": true
+        }
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [111.398369, 39.900877, 1105.7],
+            [111.398678, 39.901219, 1120.2],
+            [111.399279, 39.901002, 1119.8],
+            [111.398917, 39.900623, 1101.5]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "",
+        "id": "m-dbb45b6b-b42b-4f2a-89af-0d7c588e5a80",
+        "text": "严重变形",
+        "type": "polygon",
+        "style": {
+          "color": "#ff4d4f",
+          "opacity": 0.5,
+          "outline": true,
+          "outlineWidth": 2,
+          "materialType": "Color",
+          "clampToGround": true
+        },
+        "options": {}
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [111.400276, 39.901355, 1130.1],
+            [111.400574, 39.900865, 1073.6],
+            [111.401143, 39.901131, 1070.1],
+            [111.400891, 39.901667, 1129.9],
+            [111.400573, 39.901514, 1132]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "",
+        "id": "m-0ace95db-fb2e-4436-bf3d-4f7476124de5",
+        "type": "polygon",
+        "text": "持续加速变形",
+        "style": {
+          "color": "#ffa940",
+          "opacity": 0.5,
+          "outline": true,
+          "outlineWidth": 2,
+          "materialType": "Color",
+          "clampToGround": true
+        },
+        "options": {}
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [111.402688, 39.901349, 1120.8],
+            [111.402413, 39.901239, 1110.6],
+            [111.402268, 39.901105, 1099.6],
+            [111.402255, 39.90095, 1088.5],
+            [111.402235, 39.900845, 1078.8],
+            [111.402863, 39.900763, 1079.1],
+            [111.403249, 39.900737, 1079.6],
+            [111.403545, 39.900624, 1079.1],
+            [111.403368, 39.901118, 1110.7]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "",
+        "id": "m-78225ba6-0e8b-401e-87fd-c193f46b9612",
+        "type": "polygon",
+        "text": "边坡裂缝",
+        "style": {
+          "color": "#ffa940",
+          "opacity": 0.5,
+          "outline": true,
+          "outlineWidth": 2,
+          "materialType": "Color",
+          "clampToGround": true
+        },
+        "options": {}
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [111.398096, 39.897321, 1094.3],
+            [111.398376, 39.897565, 1094.3],
+            [111.39877, 39.897389, 1076.8],
+            [111.398415, 39.897089, 1076.2]
+          ]
+        ]
+      }
+    },
+
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "",
+        "id": "m-2b80c2c5-9a5f-4252-8276-da68b9d151b8",
+        "type": "polygon",
+        "text": "台阶高度超高",
+        "style": {
+          "color": "#f5e74f",
+          "opacity": 0.5,
+          "outline": true,
+          "outlineWidth": 2,
+          "materialType": "Color",
+          "clampToGround": true
+        },
+        "options": {}
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [111.394708, 39.898019, 1117.2],
+            [111.395201, 39.898207, 1116.5],
+            [111.395465, 39.897926, 1096.2],
+            [111.394865, 39.897637, 1098.2]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "",
+        "id": "m-1c7c79fa-3b50-4d13-8ba9-23f6e424990b",
+        "type": "polygon",
+        "text": "滑坡征兆",
+        "style": {
+          "color": "#f5e74f",
+          "opacity": 0.5,
+          "outline": true,
+          "outlineWidth": 2,
+          "materialType": "Color",
+          "clampToGround": true
+        },
+        "options": {}
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [111.394821, 39.900377, 1120.9],
+            [111.395221, 39.900037, 1096],
+            [111.395681, 39.900214, 1096.2],
+            [111.395371, 39.900518, 1122.1]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "",
+        "id": "m-2fecaebc-518f-4a7b-9a2e-f837aee90846",
+        "type": "polygon",
+        "text": "台阶高度超高",
+        "style": {
+          "color": "#59ffff",
+          "opacity": 0.5,
+          "outline": true,
+          "outlineWidth": 2,
+          "materialType": "Color",
+          "clampToGround": true
+        },
+        "options": {}
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [111.395531, 39.894351, 1101.4],
+            [111.395459, 39.89461, 1085.5],
+            [111.395011, 39.894534, 1085.4],
+            [111.395083, 39.894289, 1101.2]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "",
+        "id": "m-bbb7b8ba-7a1c-4423-96a0-7aa074b283d3",
+        "type": "polygon",
+        "text": "滑坡征兆",
+        "style": {
+          "color": "#59ffff",
+          "opacity": 0.5,
+          "outline": true,
+          "outlineWidth": 2,
+          "materialType": "Color",
+          "clampToGround": true
+        },
+        "options": {}
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [111.393789, 39.894627, 1109.3],
+            [111.393687, 39.894772, 1102.3],
+            [111.39335, 39.894568, 1100.8],
+            [111.39346, 39.894447, 1109.5]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "",
+        "id": "m-55351665-69d5-46e7-87d4-7d0094cdc828",
+        "type": "polygon",
+        "text": "台阶高度超高",
+        "style": {
+          "color": "#59ffff",
+          "opacity": 0.5,
+          "outline": true,
+          "outlineWidth": 2,
+          "materialType": "Color",
+          "clampToGround": true
+        },
+        "options": {}
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [111.398918, 39.894159, 1101.7],
+            [111.399107, 39.894004, 1094],
+            [111.399397, 39.894228, 1093.2],
+            [111.399197, 39.894379, 1101.9]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "",
+        "id": "m-298a9b3b-0b44-4db3-b1e0-d128aeaaa1a2",
+        "type": "polygon",
+        "text": "边坡出现裂缝",
+        "style": {
+          "color": "#59ffff",
+          "opacity": 0.5,
+          "outline": true,
+          "outlineWidth": 2,
+          "materialType": "Color",
+          "clampToGround": true
+        },
+        "options": {}
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [111.401796, 39.896253, 1106.5],
+            [111.401373, 39.896272, 1080],
+            [111.401246, 39.895619, 1081.5],
+            [111.401709, 39.89559, 1111.2]
+          ]
+        ]
+      }
+    }
+  ]
+}
