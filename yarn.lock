@@ -1905,9 +1905,9 @@ earcut@^2.0.0, earcut@^2.2.4:
   resolved "https://mirrors.huaweicloud.com/repository/npm/earcut/-/earcut-2.2.4.tgz"
   integrity sha512-/pjZsA1b4RPHbeWZQn66SWS8nZZWLQQ23oE3Eam7aroEFGEvwKAsJfZ9ytiEMycfzXWpca4FA9QIOehf7PocBQ==
 
-echarts@5.4.0:
+echarts@^5.4.0:
   version "5.4.0"
-  resolved "https://mirrors.huaweicloud.com/repository/npm/echarts/-/echarts-5.4.0.tgz"
+  resolved "https://registry.npmmirror.com/echarts/-/echarts-5.4.0.tgz"
   integrity sha512-uPsO9VRUIKAdFOoH3B0aNg7NRVdN7aM39/OjovjO9MwmWsAkfGyeXJhK+dbRi51iDrQWliXV60/XwLA7kg3z0w==
   dependencies:
     tslib "2.3.0"

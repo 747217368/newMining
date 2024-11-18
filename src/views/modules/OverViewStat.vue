@@ -3,10 +3,12 @@
     <template #extra>
       <div class="device-state" style="min-width: 160px">
         <div class="count online">
-          在线 <span>{{ state.sum.online }}</span>
+          <!-- 在线 <span>{{ state.value.sum.online }}</span> -->
+          在线 <span>200</span>
         </div>
         <div class="count offline">
-          离线 <span>{{ state.sum.offline }}</span>
+          <!-- 离线 <span>{{ state.value.sum.offline }}</span> -->
+          离线 <span>12</span>
         </div>
       </div>
     </template>
@@ -16,12 +18,10 @@
         <div class="stat-info">
           <div class="label">生态无人机</div>
           <div class="device-state">
-            <div class="count online">
-              在线 <span>{{ state.gnss.online }}</span>
-            </div>
-            <div class="count offline">
-              离线 <span>{{ state.gnss.offline }}</span>
-            </div>
+            <!-- <div class="count online">在线 <span>{{ state.value.gnss.online }}</span></div>
+            <div class="count offline">离线 <span>{{ state.value.gnss.offline }}</span></div> -->
+            <div class="count online">在线 <span>50</span></div>
+            <div class="count offline">离线 <span>3</span></div>
           </div>
         </div>
       </div>
@@ -30,12 +30,10 @@
         <div class="stat-info">
           <div class="label">粉尘仪</div>
           <div class="device-state">
-            <div class="count online">
-              在线 <span>{{ state.video.online }}</span>
-            </div>
-            <div class="count offline">
-              离线 <span>{{ state.video.offline }}</span>
-            </div>
+            <!-- <div class="count online">在线 <span>{{ state.value.video.online }}</span></div>
+            <div class="count offline">离线 <span>{{ state.value.video.offline }}</span></div> -->
+            <div class="count online">在线 <span>50</span></div>
+            <div class="count offline">离线 <span>3</span></div>
           </div>
         </div>
       </div>
@@ -44,117 +42,58 @@
         <div class="stat-info">
           <div class="label">物候相机</div>
           <div class="device-state">
-            <div class="count online">
-              在线 <span>{{ state.radar.online }}</span>
-            </div>
-            <div class="count offline">
-              离线 <span>{{ state.radar.offline }}</span>
-            </div>
+            <!-- <div class="count online">在线 <span>{{ state.value.radar.online }}</span></div>
+            <div class="count offline">离线 <span>{{ state.value.radar.offline }}</span></div> -->
+            <div class="count online">在线 <span>50</span></div>
+            <div class="count offline">离线 <span>3</span></div>
           </div>
         </div>
       </div>
       <div class="item">
-        <img src="@/assets/images/qixiangzhan.png"" />
+        <img src="@/assets/images/qixiangzhan.png" />
         <div class="stat-info">
           <div class="label">气象站</div>
           <div class="device-state">
-            <div class="count online">
-              在线 <span>{{ state.cxy.online }}</span>
-            </div>
-            <div class="count offline">
-              离线 <span>{{ state.cxy.offline }}</span>
-            </div>
+            <!-- <div class="count online">在线 <span>{{ state.value.cxy.online }}</span></div>
+            <div class="count offline">离线 <span>{{ state.value.cxy.offline }}</span></div> -->
+            <div class="count online">在线 <span>50</span></div>
+            <div class="count offline">离线 <span>3</span></div>
           </div>
         </div>
       </div>
     </div>
   </chart-card-layout>
 </template>
-
 <script setup>
-import { watch, reactive, ref } from "vue";
+import { watch, ref } from "vue";
 import ChartCardLayout from "@/components/ChartCardLayout.vue";
+
 const props = defineProps({
-  mineId: {
-    type: Number,
-    default: null,
-  },
+  mineId: Number,
 });
 
 const state = ref({
-  sum: {
-    online: 446,
-    offline: 22,
-  },
-  gnss: {
-    online: 24,
-    offline: 1,
-  },
-  video: {
-    online: 113,
-    offline: 12,
-  },
-  radar: {
-    online: 2,
-    offline: 1,
-  },
-  cxy: {
-    online: 3,
-    offline: 0,
-  },
+  sum: { online: 446, offline: 22 },
+  gnss: { online: 24, offline: 1 },
+  video: { online: 113, offline: 12 },
+  radar: { online: 2, offline: 1 },
+  cxy: { online: 3, offline: 0 }
 });
 
 watch(
   () => props.mineId,
   (newVal) => {
-    if (newVal) {
+    if (newVal != null) {
       state.value = {
-        sum: {
-          online: 21,
-          offline: 2,
-        },
-        gnss: {
-          online: 3,
-          offline: 1,
-        },
-        video: {
-          online: 4,
-          offline: 0,
-        },
-        radar: {
-          online: 2,
-          offline: 0,
-        },
-        cxy: {
-          online: 12,
-          offline: 1,
-        },
-      };
-    } else {
-      state.value = {
-        sum: {
-          online: 446,
-          offline: 22,
-        },
-        gnss: {
-          online: 24,
-          offline: 1,
-        },
-        video: {
-          online: 113,
-          offline: 12,
-        },
-        radar: {
-          online: 31,
-          offline: 1,
-        },
-        cxy: {
-          online: 278,
-          offline: 8,
-        },
+        sum: { online: 21, offline: 2 },
+        gnss: { online: 3, offline: 1 },
+        video: { online: 4, offline: 0 },
+        radar: { online: 2, offline: 0 },
+        cxy: { online: 12, offline: 1 }
       };
     }
   },
+  { immediate: true }
 );
 </script>
 
