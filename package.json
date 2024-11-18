@@ -39,7 +39,7 @@
     "js-md5": "^0.8.3",
     "sass": "^1.72.0",
     "unplugin-auto-import": "0.11.4",
-    "vite": "^5.0.8",
+    "vite": "^5.4.11",
     "vite-plugin-mars3d": "^4.0.0"
   }
 }
