@@ -1,5 +1,5 @@
 <template>
-  <chart-card-layout class="chart" title="视频监控">
+  <chart-card-layout class="chart" title="生态退化风险统计">
     <template #extra>
       <el-button type="primary" :icon="RefreshRight" link> 换一批 </el-button>
     </template>
