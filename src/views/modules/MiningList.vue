@@ -6,9 +6,15 @@
         <!-- 工程名称 -->
         <div class="project-title">{{ project.name }}</div>
         <!-- 时间轴 -->
-        <el-steps :space="200" direction="horizontal" align-center>
+        <el-steps style="white-space: nowrap;font-size: 9px;" :space="200" direction="horizontal" align-center>
           <el-step v-for="(step, i) in project.steps" :key="i" :title="step.title" :description="step.date"
-            :status="step.status" />
+            :status="step.status">
+            <template #icon v-if="step.status === 'finish'">
+              <el-icon>
+                <Check />
+              </el-icon>
+            </template>
+          </el-step>
         </el-steps>
       </div>
     </div>
@@ -18,6 +24,8 @@
 <script setup>
 import { reactive } from "vue";
 import ChartCardLayout from "@/components/ChartCardLayout.vue";
+import { ElIcon } from 'element-plus';
+import { Check } from '@element-plus/icons-vue';
 
 const now = new Date(); // 当前时间
 
@@ -54,7 +62,6 @@ const state = reactive({
   ],
 });
 
-
 // 动态设置状态
 state.dataList.forEach((project) => {
   let hasHighlightedNext = false; // 标记是否已设置黄色节点
@@ -72,11 +79,9 @@ state.dataList.forEach((project) => {
     }
   });
 });
-
-
 </script>
 
-<style lang="less" scoped>
+<style lang="less">
 .chart {
   box-sizing: border-box;
   margin-top: 10px;
@@ -103,32 +108,42 @@ state.dataList.forEach((project) => {
 
         .el-step__title,
         .el-step__description {
+          padding: 0 !important;
           white-space: nowrap;
-          text-overflow: ellipsis;
-          overflow: hidden;
           display: block;
-         width: 100px; // 根据实际需求调整宽度
+          font-size: 16px;
           margin: 0 auto; // 居中对齐
         }
 
-
-        .el-step__title.is-finish {
+        .el-step__title.is-finish,
+        .el-step__description.is-finish {
           color: #1fffc7; // 已完成绿色
         }
 
-        .el-step__title.is-process {
-          color: #ffd700; // 当前节点黄色
+        .el-step__title.is-in-progress,
+        .el-step__title.is-process,
+        .el-step__description.is-in-progress {
+          color: #1fc6ff; // 当前时间后第一个节点
         }
 
-        .el-step__title.is-in-progress {
-          color: #ffd700; // 当前时间后第一个节点黄色
-        }
-
-        .el-step__title.is-wait {
+        .el-step__title.is-wait,
+        .el-step__description.is-wait {
           color: rgba(255, 255, 255, 0.5); // 未来节点灰色
         }
 
+        .el-step__icon.is-finish {
+          background-color: transparent !important;
+          /* 去除背景色 */
+          border: none !important;
+          /* 去除边框 */
+          color: #1fffc7;
+          /* 设置图标颜色 */
+        }
 
+        .el-step__icon-inner.is-finish {
+          display: none;
+          /* 隐藏默认的数字或文字 */
+        }
       }
     }
   }
