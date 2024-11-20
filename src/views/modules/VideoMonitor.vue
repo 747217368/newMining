@@ -1,22 +1,6 @@
 <template>
   <chart-card-layout class="chart" title="生态退化风险统计">
-    <template #extra>
-      <el-button type="primary" :icon="RefreshRight" link> 换一批 </el-button>
-    </template>
-    <div class="videos">
-      <el-row class="stat-items" :gutter="12">
-        <el-col :span="12" v-for="item in videoList" :key="item.id">
-          <div class="item">
-            <!-- <video
-              class="video video-js vjs-default-skin"
-              :id="`videoElement_${item.id}`"
-            ></video> -->
-            <div class="video"></div>
-            <div class="title">{{ item.name }}</div>
-          </div>
-        </el-col>
-      </el-row>
-    </div>
+    
   </chart-card-layout>
 </template>
 
@@ -86,7 +70,7 @@ onMounted(() => {
 <style lang="less" scoped>
 .chart {
   margin-top: 12px;
-  height: 320px;
+  height: 260px;
 
   .videos {
     height: 100%;

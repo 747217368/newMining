@@ -1,139 +1,188 @@
 <template>
-  <div class="layout">
-    <div class="layout-header">
-      <div class="left">
-        <img class="logo" src="@/assets/vue.svg" />
-        <div class="title">矿山生态修复大数据指挥舱</div>
-      </div>
-      <div class="navigation">
-        <el-menu
-          router
-          :default-active="activeIndex"
-          mode="horizontal"
-          @select="handleSelect"
-          background-color="#303336"
-          text-color="#fff"
-          active-text-color="#ffd04b"
-          :ellipsis="false"
-        >
-          <el-menu-item
-            :index="item.path"
-            v-for="item in menus"
-            :key="item.name"
-            >{{ item.meta.title }}</el-menu-item
-          >
-        </el-menu>
-        <el-dropdown>
-          <div class="userinfo">
-            <el-avatar
-              size="small"
-              src="https://cube.elemecdn.com/0/88/03b0d39583f48206768a7534e55bcpng.png"
-            ></el-avatar>
-            <div class="username">邵冬冬</div>
-          </div>
-          <template #dropdown>
-            <el-dropdown-menu>
-              <el-dropdown-item>退出系统</el-dropdown-item>
-            </el-dropdown-menu>
-          </template>
-        </el-dropdown>
-      </div>
-    </div>
+  <chart-card-layout class="chart" title="生态退化预警信息">
+    <div class="warning-list">
 
-    <div class="layout-content">
-      <router-view v-slot="{ Component }">
-        <keep-alive>
-          <component :is="Component" />
-        </keep-alive>
-      </router-view>
+
+      <!-- 统计信息 -->
+      <div class="stats">
+        <div class="stat-item">
+          <div class="stat-title">生态退化个数</div>
+          <div class="stat-value">{{ data.length }}</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-title">待处理个数</div>
+          <div class="stat-value pending">
+            {{ pendingCount }}
+          </div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-title">已处理个数</div>
+          <div class="stat-value processed">
+            {{ processedCount }}
+          </div>
+        </div>
+      </div>
+
+      <!-- 表格数据 -->
+      <div class="table">
+        <!-- 表格头 -->
+        <div class="table-header">
+          <div class="table-cell">风险位置</div>
+          <div class="table-cell">风险面积</div>
+          <div class="table-cell">风险等级</div>
+          <div class="table-cell">风险日期</div>
+          <div class="table-cell">风险处置情况</div>
+        </div>
+        <!-- 表格内容 -->
+        <div class="table-body">
+          <div class="table-row" v-for="(row, index) in data" :key="index">
+            <div class="table-cell" style="font-size: 12px;">
+              {{ row.location }}
+            </div>
+            <div class="table-cell">{{ row.area }}</div>
+            <div class="table-cell">{{ row.level }}</div>
+            <div class="table-cell" :class="{ 'highlight-date': row.status === '待处置' }">
+              {{ row.date }}
+            </div>
+            <div class="table-cell">
+              <!-- 使用 el-button 显示按钮 -->
+              <el-button v-if="row.status === '待处置'" type="danger" size="small" @click="markAsProcessed(index)">
+                {{ row.status }}
+              </el-button>
+              <span v-else class="status-text processed">
+                {{ row.status }}
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
-  </div>
+  </chart-card-layout>
 </template>
 
+
 <script setup>
-import { watch, reactive, ref, onUnmounted, computed } from "vue";
+import { reactive, computed } from "vue";
+import ElementPlus from 'element-plus';
+import 'element-plus/dist/index.css'; // 引入 Element Plus 样式
+// 表格数据
+const data = reactive([
+  {
+    location: `39°17'15\"N, 111°17'15\"N`,
+    area: 240,
+    level: "2级退化",
+    date: "2024年6月7日",
+    status: "已处置",
+  },
+  {
+    location: `39°17'15\"N, 111°17'15\"N`,
+    area: 200,
+    level: "3级退化",
+    date: "2024年7月12日",
+    status: "待处置",
+  },
+  {
+    location: `39°17'15\"N, 111°17'15\"N`,
+    area: 250,
+    level: "1级退化",
+    date: "2024年9月12日",
+    status: "待处置",
+  },
+  {
+    location: `39°17'15\"N, 111°17'15\"N`,
+    area: 320,
+    level: "4级退化",
+    date: "2024年10月1日",
+    status: "已处置",
+  },
+]);
 
-import { useRouter, useRoute } from "vue-router";
+// 统计数量
+const pendingCount = computed(() => data.filter((item) => item.status === "待处置").length);
+const processedCount = computed(() => data.filter((item) => item.status === "已处置").length);
 
-const router = useRouter();
-const $route = useRoute();
-
-const activeIndex = ref("/index");
-
-const menus = computed(() => router.options.routes[0].children);
-
-console.log("$route", $route);
-
-const handleSelect = () => {};
+// 更新状态为“已处置”
+const markAsProcessed = (index) => {
+  data[index].status = "已处置";
+};
 </script>
 
-<style lang="less" scoped>
-.layout {
-  display: flex;
-  flex-direction: column;
+<style lang="less">
+.chart {
+  box-sizing: border-box;
+  padding: 8px;
 
-  height: 100vh;
-  width: 100%;
-  min-width: 1080px;
-  overflow-x: auto;
-  .layout-header {
-    box-sizing: border-box;
-    background-color: #303336;
-    display: flex;
-    // justify-content: space-between;
-    padding: 0px 12px;
-
-    .left {
-      height: 60px;
-      line-height: 60px;
-      display: flex;
-      align-items: center;
-      color: #fff;
-
-      .logo {
-        height: 48px;
-        width: 48px;
-        margin: 0px 4px;
-      }
-      .title {
-        font-size: 20px;
-        letter-spacing: 1px;
-        font-weight: 550;
-      }
-    }
-
-    .navigation {
-      flex: 1;
+  .warning-list {
+    width: 106%;
+    position: relative;
+    right: 15px;
+    .stats {
       display: flex;
       justify-content: space-between;
-      align-items: center;
-      align-content: stretch;
-      margin-left: 36px;
+      margin-bottom: 10px;
 
-      .userinfo {
-        display: flex;
-        align-items: center;
-        height: 60px;
-        line-height: 60px;
-        padding: 0px 20px;
+      .stat-item {
+        flex: 1;
+        text-align: center;
+        padding: 10px;
+        background-color: #061235;
+        margin: 0 5px;
+        border-radius: 8px;
+        color: #fff;
 
-        .username {
-          color: #fff;
-          margin-left: 8px;
+        .stat-title {
+          font-size: 14px;
+          color: #aaa;
+        }
+
+        .stat-value {
+          font-size: 24px;
+          font-weight: bold;
+        }
+
+        .stat-value.pending {
+          color: #ff4242;
+          /* 待处理状态为红色 */
+        }
+
+        .stat-value.processed {
+          color: #1fffc7;
+          /* 已处理状态为绿色 */
         }
       }
+    }
 
-      .userinfo:hover {
-        cursor: pointer;
-        background-color: rgba(67, 74, 80, 1);
+    .table-body {
+      max-height: 100px;
+      /* 限制表格最大高度 */
+      overflow-y: auto;
+      /* 启用垂直滚动条 */
+      scrollbar-width: thin;
+      scrollbar-color: #1fffc7 #061235;
+      &::-webkit-scrollbar {
+        width: 6px;
+        /* 滚动条宽度 */
+      }
+
+      &::-webkit-scrollbar-thumb {
+        background-color: #1fffc7;
+        /* 滚动条滑块颜色 */
+        border-radius: 10px;
+        /* 圆角 */
+      }
+
+      &::-webkit-scrollbar-track {
+        background-color: #061235;
+        /* 滚动条轨道颜色 */
       }
     }
-  }
 
-  .layout-content {
-    flex: 1;
-    overflow-y: auto;
-    background-color: #f0f0f0;
+    .table-cell {
+      pointer-events: auto;
+      /* 确保按钮点击事件正常 */
+      position: relative;
+      /* 修复按钮可能受影响的问题 */
+    }
   }
 }
 </style>

@@ -1,168 +1,205 @@
 <template>
-  <chart-card-layout class="chart" title="实时预警">
-    <div class="warining-list">
-      <Vue3SeamlessScroll
-        :list="dataList"
-        :step="0.15"
-        hover
-        class="scroll-content"
-      >
-        <div class="item" v-for="item in dataList" :key="item.id">
-          <div class="date">{{ item.time }}</div>
-          <div :class="`warnning-content ${['red', 'yellow'][item.level]}`">
-            <div class="level-block">
-              <img src="@/assets/svg/warn-icon.svg" />
-              <span>{{ ["Ⅰ级", "Ⅱ级"][item.level] }}</span>
+  <chart-card-layout class="chart" title="生态退化预警信息">
+    <div class="warning-list">
+      <!-- 统计信息 -->
+      <div class="stats">
+        <div class="stat-item">
+          <div class="stat-title">生态退化个数</div>
+          <div class="stat-value">{{ data.length }}</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-title">待处理个数</div>
+          <div class="stat-value pending">
+            {{ pendingCount }}
+          </div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-title">已处理个数</div>
+          <div class="stat-value processed">
+            {{ processedCount }}
+          </div>
+        </div>
+      </div>
+
+      <!-- 表格数据 -->
+      <div class="table">
+        <!-- 表格头 -->
+        <div class="table-header">
+          <div class="table-cell">风险位置</div>
+          <div class="table-cell">风险面积</div>
+          <div class="table-cell">风险等级</div>
+          <div class="table-cell">风险日期</div>
+          <div class="table-cell">风险处置情况</div>
+        </div>
+        <!-- 表格内容 -->
+        <div class="table-body">
+          <div class="table-row" v-for="(row, index) in data" :key="index">
+            <div class="table-cell" style="font-size: 12px;">
+              {{ row.location }}
             </div>
-            <div class="warnning-txt">
-              {{ item.message }}
+            <div class="table-cell">{{ row.area }}</div>
+            <div class="table-cell">{{ row.level }}</div>
+            <div
+              class="table-cell"
+              :class="{ 'highlight-date': row.status === '待处置' }"
+            >
+              {{ row.date }}
+            </div>
+            <div class="table-cell">
+              <!-- 使用 el-button 显示按钮 -->
+              <el-button
+                v-if="row.status === '待处置'"
+                type="danger"
+                size="small"
+                @click="markAsProcessed(index)"
+              >
+                {{ row.status }}
+              </el-button>
+              <span v-else class="status-text processed">
+                {{ row.status }}
+              </span>
             </div>
           </div>
         </div>
-      </Vue3SeamlessScroll>
+      </div>
     </div>
   </chart-card-layout>
 </template>
 
 <script setup>
-import { watch, reactive, ref } from "vue";
+import { reactive, computed } from "vue";
 import ChartCardLayout from "@/components/ChartCardLayout.vue";
-import { Vue3SeamlessScroll } from "vue3-seamless-scroll";
-const dataList = [
+// 表格数据
+const data = reactive([
   {
-    id: 1,
-    message: "降雨异常！",
-    time: "2023-08-13 08:91:36",
-    level: 0,
+    location: `39°17'15\"N, 111°17'15\"N`,
+    area: 240,
+    level: "2级退化",
+    date: "2024年6月7日",
+    status: "已处置",
   },
   {
-    id: 2,
-    message: "630边坡形变异常！",
-    time: "2023-08-16 17:42:17",
-    level: 1,
+    location: `39°17'15\"N, 111°17'15\"N`,
+    area: 200,
+    level: "3级退化",
+    date: "2024年7月12日",
+    status: "待处置",
   },
   {
-    id: 3,
-    message: "780边坡疑似裂缝！",
-    time: "2023-08-18 10:16:08",
-    level: 1,
+    location: `39°17'15\"N, 111°17'15\"N`,
+    area: 250,
+    level: "1级退化",
+    date: "2024年9月12日",
+    status: "待处置",
   },
   {
-    id: 4,
-    message: "C02测斜仪数据异常！",
-    time: "2023-08-18 19:50:51",
-    level: 0,
+    location: `39°17'15\"N, 111°17'15\"N`,
+    area: 320,
+    level: "4级退化",
+    date: "2024年10月1日",
+    status: "已处置",
   },
-  {
-    id: 5,
-    message: "107边坡位移异常！",
-    time: "2023-08-19 02:27:19",
-    level: 1,
-  },
-];
+]);
+
+// 统计数量
+const pendingCount = computed(() => data.filter((item) => item.status === "待处置").length);
+const processedCount = computed(() => data.filter((item) => item.status === "已处置").length);
+
+// 更新状态为“已处置”
+const markAsProcessed = (index) => {
+  data[index].status = "已处置";
+};
 </script>
 
 <style lang="less" scoped>
 .chart {
-  margin-top: 12px;
-  // height: 260px;
-  flex: 1;
-  .warining-list {
-    height: 100%;
-    position: relative;
-    .scroll-content {
-      box-sizing: border-box;
-      position: absolute;
-      padding: 16px 24px;
-      top: 8px;
-      left: 0px;
-      width: 100%;
-      height: calc(100% - 8px);
-      overflow-y: hidden;
-      .item {
-        margin-bottom: 16px;
-        .date {
-          color: #1fc6ff;
-          font-size: 18px;
-          font-style: normal;
-          font-weight: 600;
-          line-height: 27px;
-        }
+  box-sizing: border-box;
+  padding: 10px;
 
-        // &:nth-child(1) {
-        //   margin-top: 0px;
-        // }
+  .warning-list {
+    .stats {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 10px;
 
-        .date::after {
-          content: "";
-          display: inline-block;
-          margin-left: 12px;
-          width: 22px;
-          height: 10px;
-          vertical-align: middle;
-          background-image: url(@/assets/svg/arrow-3.svg);
-          background-size: 100% 100%;
-          background-repeat: no-repeat;
-        }
+      .stat-item {
+        flex: 1;
+        text-align: center;
+        padding: 10px;
+        background-color: #061235;
+        margin: 0 5px;
+        border-radius: 8px;
+        color: #fff;
 
-        .warnning-content {
-          margin-top: 4px;
-          display: flex;
-          height: 32px;
-          display: flex;
-          align-items: stretch;
-          color: #fff;
+        .stat-title {
           font-size: 14px;
-          font-style: normal;
-          font-weight: 600;
-          .level-block {
-            width: 68px;
-            display: flex;
-            align-items: center;
-            box-sizing: border-box;
-            // padding: 0px 8px;
-            justify-content: center;
+          color: #aaa;
+        }
 
-            img {
-              height: 20px;
-              width: 20px;
-              margin-right: 4px;
-            }
+        .stat-value {
+          font-size: 24px;
+          font-weight: bold;
+        }
+
+        .stat-value.pending {
+          color: #ff4242; /* 待处理状态为红色 */
+        }
+
+        .stat-value.processed {
+          color: #1fffc7; /* 已处理状态为绿色 */
+        }
+      }
+    }
+
+    .table {
+      .table-header {
+        display: flex;
+        justify-content: space-between;
+        background-color: #09253d; 
+        padding: 10px;
+        border-radius: 8px;
+        font-weight: bold;
+        color: #fff;
+
+        .table-cell {
+          flex: 1;
+          text-align: center;
+          font-size: 14px;
+        }
+      }
+
+      .table-body {
+        .table-row {
+          display: flex;
+          justify-content: space-between;
+          padding: 10px;
+          margin-top: 8px;
+          background-color: #061235;
+          border-radius: 8px;
+
+          &:nth-child(even) {
+            background-color: #09253d; /* 奇偶行样式 */
           }
 
-          .warnning-txt {
-            box-sizing: border-box;
+          .table-cell {
             flex: 1;
-            margin-left: 4px;
-            line-height: 32px;
-            padding: 0px 8px;
-          }
+            text-align: center;
+            font-size: 12px;
+            color: #fff;
 
-          &.red {
-            .level-block {
-              border-left: 2px solid #ff386b;
-              background: rgba(255, 56, 107, 0.2);
+            &.highlight-date {
+              color: #ff4242; /* 待处理日期红色高亮 */
+              font-weight: bold;
+              width: 5px;
             }
 
-            .warnning-txt {
-              background: rgba(255, 56, 107, 0.2);
-              background-image: url(@/assets/svg/red-warning-bg.svg);
-              background-size: 100% 100%;
-              background-repeat: no-repeat;
-            }
-          }
-
-          &.yellow {
-            .level-block {
-              border-left: 2px solid #ff911f;
-              background: rgba(255, 145, 31, 0.2);
-            }
-
-            .warnning-txt {
-              background: rgba(255, 145, 31, 0.2);
-              background-image: url(@/assets/svg/red-warning-bg.svg);
-              background-size: 100% 100%;
-              background-repeat: no-repeat;
+            &.highlight-status {
+              width: 5px;
+              background-color: #ff4242;
+              color: #fff;
+              font-weight: bold;
+              padding: 2px 5px;
+              border-radius: 5px;
             }
           }
         }
